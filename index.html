@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Psychic Game</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+
+
+  <link rel="stylesheet" href="reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <h1>The Psychic Game</h1>
+   <p>Guess What Letter I'm Thinking Of</p> 
+ 
+   <ul>
+    <h2>Wins</h2>
+    <div id="wins"></div>
+     <h2>Loses</h2>
+    <div id="loses"></div>
+    <li id="guesses">Guesses Left:</li>
+    <li id="soFar">Your Guesses So Far:</li>
+  </ul> 
+
+  <script type="text/javascript">
+ var options = ["a","b","c", "d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  var wins= 0;
+  var loses= 0;
+  var guesses= 9;
+  var guessChoices= [];
+
+  for( var i = 0; i < options.length; i++){
+
+  }
+   document.onkeyup = function() {
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    console.log(userGuess);
+    
+    var computerGuess= options[Math.floor(Math.random()*options.length)];
+    console.log(computerGuess);
+
+    if (userGuess == computerGuess) {
+     document.getElementById("wins").textContent = ++wins;
+     guesses= 9;
+     guessChoices=[];
+     
+   } else{
+    document.getElementById("loses").innerHTML = --loses;
+    guesses= 9;
+    guessChoices =[]; 
+    console.log(guessChoices)
+    
+  //  } else {
+  //    document.getElementById("guesses").innerHTML = 
+  //    guesses= 9;
+  //    guessChoices = [];
+  //    }
+  }
+
+
+
+  </script>
+
+
+
+
+
+  <!-- Put a for loop -->
+
+
+  <!-- Put a function as well -->
+
+  <!-- Go to console and press keyword to see what the letter's ID is. Then put their Id in the for loop -->
+
+  <!-- Also put in documemnt.getElment. 
+
+  
+
+</body>
+
+
+</html>
