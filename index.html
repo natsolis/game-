@@ -16,52 +16,59 @@
 
 
   <h1>The Psychic Game</h1>
-   <p>Guess What Letter I'm Thinking Of</p> 
- 
-   <ul>
+  <p>Guess What Letter I'm Thinking Of</p>
+
+  <ul>
     <h2>Wins</h2>
     <div id="wins"></div>
-     <h2>Loses</h2>
+    <h2>Loses</h2>
     <div id="loses"></div>
-    <li id="guesses">Guesses Left:</li>
-    <li id="soFar">Your Guesses So Far:</li>
-  </ul> 
+    <li>Guesses Left:<span id="guesses"></span></li>
+    <li>Your Guesses So Far:<span id="soFar"></span></li>
+  </ul>
 
   <script type="text/javascript">
- var options = ["a","b","c", "d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-  var wins= 0;
-  var loses= 0;
-  var guesses= 9;
-  var guessChoices= [];
+    var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var wins = 0;
+    var loses = 0;
+    var guesses = 9;
+    var guessChoices = [];
 
-  for( var i = 0; i < options.length; i++){
+    for (var i = 0; i < options.length; i++) {
 
-  }
-   document.onkeyup = function() {
-    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-    console.log(userGuess);
-    
-    var computerGuess= options[Math.floor(Math.random()*options.length)];
-    console.log(computerGuess);
+    }
+    document.onkeyup = function (event) {
+      var userGuess = event.key.toLowerCase();
+      console.log(userGuess);
 
-    if (userGuess == computerGuess) {
-     document.getElementById("wins").textContent = ++wins;
-     guesses= 9;
-     guessChoices=[];
-     
-   } else{
-    document.getElementById("loses").innerHTML = --loses;
-    guesses= 9;
-    guessChoices =[]; 
-    console.log(guessChoices)
-    
-  //  } else {
-  //    document.getElementById("guesses").innerHTML = 
-  //    guesses= 9;
-  //    guessChoices = [];
-  //    }
-  }
+      var computerGuess = options[Math.floor(Math.random() * options.length)];
+      console.log(computerGuess);
 
+      if (userGuess == computerGuess) {
+        document.getElementById("wins").textContent = ++wins;
+       reset()
+
+      } else {
+        document.getElementById("loses").innerHTML = ++loses;
+        console.log(guesses)
+
+        document.getElementById("guesses").innerHTML = guesses--;
+        guessChoices.push(userGuess);
+        document.getElementById("soFar").innerHTML = guessChoices
+        if (guesses === 0 ){
+         alert("You Lose!"); reset()
+        }
+
+
+      } 
+      function reset(){
+        guesses = 9;
+        guessChoices = [];
+        loses = 0;
+
+      }
+
+    }
 
 
   </script>
